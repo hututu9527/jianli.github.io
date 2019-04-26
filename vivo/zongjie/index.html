@@ -188,25 +188,25 @@ hr.l{height: 1px;    border: none;    background: #CDCDCD;    color: #CDCDCD;mar
         <div class="bottom">
 	        <div class="rightContent">
 <div style="width:100%;" contenteditable="true">
+
     <p>[size=4][color=DimGray]{{shouyu}}</p>
-    
+
     <template v-if="shoutu">
-        <p>[align=center][img]{{shoutu}}[/img][/align]</p>
+        <div>[align=center][img]{{shoutu}}[/img][/align]</div>
     </template>
     <template v-if="kaipian">
         <p>{{kaipian}}</p>
     </template>
 
     <div v-for="item in data">
-        <p>[hr]</p>
-        <p v-if="item.groupName">[align=center][color=Red]{{item.groupName}}[/color][/align]</p>
+        <div>[align=center][img]static/image/hrline/line3.png[/img][/align]</div>
+        <div v-if="item.groupName">[align=center][color=Red]{{item.groupName}}[/color][/align]</div>
         <div v-for="list in item.lists">
             <div v-for="img in list.imgs" v-if="img.src">[align=center][img]{{img.src}}[/img][/align]</div>
             <div>{{list.des}} ——{{list.user}} [url={{list.link}}]查看原文[/url]</div>
-			<p> </p>
+			<br>
        </div>
     </div>
-	<p> </p>
     <div>{{end}}[/color][/size]</div>
 </div>
 	        </div>
