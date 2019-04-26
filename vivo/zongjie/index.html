@@ -188,9 +188,8 @@ hr.l{height: 1px;    border: none;    background: #CDCDCD;    color: #CDCDCD;mar
         <div class="bottom">
 	        <div class="rightContent">
 <div style="width:100%;" contenteditable="true">
-
-    <p>[size=4][color=DimGray]{{shouyu}}</p>
-
+    <div>[size=4][color=DimGray]</div>
+    <p v-if="shouyu">{{shouyu}}</p>
     <template v-if="shoutu">
         <div>[align=center][img]{{shoutu}}[/img][/align]</div>
     </template>
