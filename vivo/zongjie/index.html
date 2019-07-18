@@ -145,6 +145,31 @@ hr.l{height: 1px;    border: none;    background: #CDCDCD;    color: #CDCDCD;mar
                     <td>结束语：</td>
                     <td><textarea v-model="end" name="" id="" cols="30" rows="4"></textarea></td>
                 </tr>
+
+                <tr>
+                    <td>推荐1：</td>
+                    <td><input type="text" v-model="tjtext1" name="" id="" cols="30" rows="4"/></td>
+                </tr>
+                <tr>
+                    <td>推荐链接1：</td>
+                    <td><input type="text" v-model="tjlink1" name="" id="" cols="30" rows="4"/></td>
+                </tr>
+                <tr>
+                    <td>推荐2：</td>
+                    <td><input type="text" v-model="tjtext2" name="" id="" cols="30" rows="4"/></td>
+                </tr>
+                <tr>
+                    <td>推荐链接2：</td>
+                    <td><input type="text" v-model="tjlink2" name="" id="" cols="30" rows="4"/></td>
+                </tr>
+                <tr>
+                    <td>推荐3：</td>
+                    <td><input type="text" v-model="tjtext3" name="" id="" cols="30" rows="4"/></td>
+                </tr>
+                <tr>
+                    <td>推荐链接3：</td>
+                    <td><input type="text" v-model="tjlink3" name="" id="" cols="30" rows="4"/></td>
+                </tr>
                 
             </table>
         </div>
@@ -183,6 +208,11 @@ hr.l{height: 1px;    border: none;    background: #CDCDCD;    color: #CDCDCD;mar
                 </div>
                 <br>
                 <p>{{end}}</p>
+                <br/>
+                <div><b>...相关精彩推荐...</b></div>
+                <div>1.<a :href="tjlink1" target="_blank">{{tjtext1}}</a></div>
+                <div>2.<a :href="tjlink2" target="_blank">{{tjtext2}}</a></div>
+                <div>3.<a :href="tjlink3" target="_blank">{{tjtext3}}</a></div>
             </div>
         </div>
         <div class="bottom">
@@ -206,7 +236,13 @@ hr.l{height: 1px;    border: none;    background: #CDCDCD;    color: #CDCDCD;mar
 			<br>
        </div>
     </div>
-    <div>{{end}}[/color][/size]</div>
+    <div>{{end}}</div>
+    <br/>
+    <div>[b]...相关精彩推荐...[/b]</div>
+    <div>1.[url={{tjlink1}}]{{tjtext1}}[/url]</div>
+    <div>2.[url={{tjlink2}}]{{tjtext2}}[/url]</div>
+    <div>3.[url={{tjlink3}}]{{tjtext3}}[/url]</div>
+    <div>[/color][/size]</div>
 </div>
 	        </div>
         </div>
@@ -221,6 +257,12 @@ hr.l{height: 1px;    border: none;    background: #CDCDCD;    color: #CDCDCD;mar
 		shouyu:"西柚头戴式蓝牙降噪耳机是一款支持主动降噪的头戴式蓝牙耳机，听音乐时能有效减少环境噪音的影响，无论何时何地，都能助你沉浸享受。全新设计的40mm钕铁硼单元和金属封闭音腔，能带来高保真的音质体验，并且集成数字降噪的360°高灵敏麦克风，除了听音乐之外，在嘈杂的户外，还能安心接听电话，或者吃鸡时能时刻与队友保持高清语音交流。",
 		shoutu:"https://bbsfiles.vivo.com.cn/vivobbs/attachment/forum/201901/29/215959oa4a5jrwhjye4y4x.jpg.thumb.jpg",
 		kaipian:"第7期的评测已经结束，我们来看看本期的评测体验V粉们怎么说吧。",
+        tjlink1:"https://bbs.vivo.com.cn/forum.php?mod=viewthread&tid=5489204",
+        tjtext1:"V众测18期丨199元沃丁声波电动牙刷，0元试用！",
+        tjlink2:"https://bbs.vivo.com.cn/forum.php?mod=viewthread&tid=5489204",
+        tjtext2:"V众测18期丨199元沃丁声波电动牙刷，0元试用！",
+        tjlink3:"https://bbs.vivo.com.cn/forum.php?mod=viewthread&tid=5489204",
+        tjtext3:"V众测18期丨199元沃丁声波电动牙刷，0元试用！",
 		data:[
 			{
 				groupName:"【外观评测】",
