@@ -89,28 +89,8 @@ hr.l{height: 1px;    border: none;    background: #CDCDCD;    color: #CDCDCD;mar
                     <td><input type="text" v-model="jp3" name="" id="" cols="30" rows="4"/></td>
                 </tr>
                 <tr>
-                    <td>推荐1：</td>
-                    <td><input type="text" v-model="tjtext1" name="" id="" cols="30" rows="4"/></td>
-                </tr>
-                <tr>
-                    <td>推荐链接1：</td>
-                    <td><input type="text" v-model="tjlink1" name="" id="" cols="30" rows="4"/></td>
-                </tr>
-                <tr>
-                    <td>推荐2：</td>
-                    <td><input type="text" v-model="tjtext2" name="" id="" cols="30" rows="4"/></td>
-                </tr>
-                <tr>
-                    <td>推荐链接2：</td>
-                    <td><input type="text" v-model="tjlink2" name="" id="" cols="30" rows="4"/></td>
-                </tr>
-                <tr>
-                    <td>推荐3：</td>
-                    <td><input type="text" v-model="tjtext3" name="" id="" cols="30" rows="4"/></td>
-                </tr>
-                <tr>
-                    <td>推荐链接3：</td>
-                    <td><input type="text" v-model="tjlink3" name="" id="" cols="30" rows="4"/></td>
+                    <td>推荐：</td>
+                    <td><textarea v-model="tuijian" name="" id="" cols="30" rows="8" v-on:input="setTuijian()"></textarea></td>
                 </tr>
             </table>
         </div>
@@ -176,9 +156,7 @@ hr.l{height: 1px;    border: none;    background: #CDCDCD;    color: #CDCDCD;mar
                     <div>6、在法律允许的范围内本活动解释权归V粉社区所有。</div>
                     <br/>
                     <div><b>...相关精彩推荐...</b></div>
-                    <div>1.<a :href="tjlink1" target="_blank">{{tjtext1}}</a></div>
-                    <div>2.<a :href="tjlink2" target="_blank">{{tjtext2}}</a></div>
-                    <div>3.<a :href="tjlink3" target="_blank">{{tjtext3}}</a></div>
+                    <div v-for="(item, index) in tuijianArray">{{index+1}}.<a :href="item.link" target="_blank">{{item.text}}</a></div>
             </div>
         </div>
         <div class="bottom">
@@ -239,9 +217,7 @@ hr.l{height: 1px;    border: none;    background: #CDCDCD;    color: #CDCDCD;mar
                     <div>6、在法律允许的范围内本活动解释权归V粉社区所有。</div>
                     <br/>
                     <div>[b]...相关精彩推荐...[/b]</div>
-                    <div>1.[url={{tjlink1}}]{{tjtext1}}[/url]</div>
-                    <div>2.[url={{tjlink2}}]{{tjtext2}}[/url]</div>
-                    <div>3.[url={{tjlink3}}]{{tjtext3}}[/url]</div>
+                    <div v-for="(item, index) in tuijianArray">{{index+1}}.[url={{item.link}}]{{item.text}}[/url]</div>
                     <div>[/size]</div>
                 </div>
 	        </div>
@@ -265,14 +241,34 @@ hr.l{height: 1px;    border: none;    background: #CDCDCD;    color: #CDCDCD;mar
         jp2:"Kappa 保温杯 X1",
         jp3:"HYUNDA 无线蓝牙音箱i80 x1",
         jp4:"2019金豆 x1",
-        tjlink1:"https://bbs.vivo.com.cn/forum.php?mod=viewthread&tid=5489204",
-        tjtext1:"V众测18期丨199元沃丁声波电动牙刷，0元试用！",
-        tjlink2:"https://bbs.vivo.com.cn/forum.php?mod=viewthread&tid=5489204",
-        tjtext2:"V众测18期丨199元沃丁声波电动牙刷，0元试用！",
-        tjlink3:"https://bbs.vivo.com.cn/forum.php?mod=viewthread&tid=5489204",
-        tjtext3:"V众测18期丨199元沃丁声波电动牙刷，0元试用！"
+        tuijian:"V众测18期丨199元沃丁声波电动牙刷，0元试用1\nhttps://bbs.vivo.com.cn/forum.php?mod=viewthread&tid=5489204\nV众测18期丨199元沃丁声波电动牙刷，0元试用2\nhttps://bbs.vivo.com.cn/forum.php?mod=viewthread&tid=5489204\nV众测18期丨199元沃丁声波电动牙刷，0元试用3\nhttps://bbs.vivo.com.cn/forum.php?mod=viewthread&tid=5489204",
+        tuijianArray:[]
 	  },
+      mounted: function () {
+        this.setTuijian();
+      },
 	  methods:{
+          setTuijian:function(){
+            var self = this;
+            var tuijian = this.tuijian.split("\n");
+            
+            var cachArray = [];
+            _.each(tuijian,function(item,index){
+                if(item != "" && item != "(出处: vivo智能手机V粉社区)"){
+                    cachArray.push(item);
+                }
+            })
+
+            self.tuijianArray = [];
+            _.each(cachArray,function(item,index){
+                if(index %2 == 0){
+                    self.tuijianArray.push({
+                        text: item,
+                        link: cachArray[index + 1] || ""
+                    })
+                }
+            })
+          },
 		  getData:function(day){
             if(!this.time){
                 return "";
