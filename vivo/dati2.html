@@ -25,8 +25,11 @@
 				var time = document.getElementById("time");
 				var text = H + "：" + M  + "：" + S;
 				time.innerText = text;
+
 				if(S == 58){
-					location.reload();
+					//location.reload();
+					var iframe = document.getElementById("frame");
+					iframe.src = "https://topic.vivo.com.cn/qgamecenter/TPt1zy27bd72o/index.html";
 				}
 			},500);
 		</script>
