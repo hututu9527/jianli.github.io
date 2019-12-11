@@ -9,7 +9,14 @@
 			location.hash = "";
 		</script>
 		<script type="text/javascript">
-			document.write(location)
+			document.write("<P>" + location + "</P>")
+			
+			window.onhashchange = function(){
+				debugger;
+				document.write("hashchange")
+			}
+			
+			
 		</script>
 	</body>
 </html>
